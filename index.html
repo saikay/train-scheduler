@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="Assets/css/style.css">
+    <title>Train Scheduler</title>
+</head>
+<body>
+    <div class="jumbotron" style="text-align:center"><h1 class="display-4">Train Scheduler</h1></div>
+    <div class="displaySchedules">
+        <table class="table table-striped">
+            <tr>
+                <tr>
+                    <th>Train Name</th>
+                    <th>Destination</th>
+                    <th>Frequency (min)</th>
+                    <th>Next Arrival</th>
+                    <th>Minutes Away</th></tr>
+            </tr>
+
+        </table>
+    </div>
+    <form style="width:400px;" class="mx-auto">
+        <label for="name">Train Name</label>
+        <input id="name" class="form-control" type="text">
+        <label for="destination">Destination</label>
+        <input id="destination" class="form-control" type="text">
+        <label for="firstTrain">First Train Time(HH:mm Military Time)</label>
+        <input id="firstTrain" class="form-control" type="text" placeholder="HH:mm">
+        <label for="frequency">Frequency (min)</label>
+        <input id="frequency" class="form-control" type="number" >
+        <button type="button" id="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <script src="Assets/javascript/train-scheduler.js"></script>
+</body>
+</html>
