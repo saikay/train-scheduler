@@ -29,11 +29,15 @@
   database.ref().on("child_added",function(snapshot){
     var record = snapshot.val();
     var arr = [];
-    record.firstTrain;
-
+    var result = getTimeLeft(record.firstTrain);
+    var timeLeft = record.frequency - (getTimeLeft(record.firstTrain)  % parseInt(record.frequency));
+    var multiplier = Math.ceil(result / record.frequency);
+    var nextArrival = moment(record.firstTrain,"HH:mm").add(multiplier * record.frequency,"minutes").format("HH:mm");
     arr.push(record.name);
     arr.push(record.destination);
     arr.push(record.frequency);
+    arr.push(nextArrival);
+    arr.push(timeLeft);
     appendTable(arr);
     
   })
@@ -42,9 +46,16 @@
     database.ref().push(param);
   }
   
-function getTime(time){
-    var time = moment(time,"HH:mm");
-
+//assuming time always HH:mm, split time
+//set it today's hour and minute subtract, current time.  
+function getTimeLeft(time){
+  var today = new Date();
+  currentTime = today.getTime();
+  today.setHours(time.split(":")[0]);
+  today.setMinutes(time.split(":")[1]);
+  var firstTrainTime = today.getTime();
+  //return in minutes
+  return (currentTime - firstTrainTime) / 1000 / 60;
 }
 
   //create a row
